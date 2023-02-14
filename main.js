@@ -1,46 +1,73 @@
 let listaDeProductos;
 let pregunta;
-opciones()
+let compraDeUsuario;
+let busquedaDeProducto;
+let cantidad;
+let precio;
+let saldo=0;
+let valorDeCompra;
 
-class productos{
-
-    constructor(nombre,tipo,precio,stock){
-        this.name=nombre;
-        this.tipo=tipo;
-        this.precio=precio;
-        this.stock=stock;
-    }
-    get_mostrarStock(){
-        console.log("----------------");
-        console.log("Nombre:",this.name)
-        console.log("Tipo:",this.tipo);
-        console.log("Precio:$",this.precio);
-        console.log("Stock:",this.stock);
-    }
+class productos {
+  constructor(nombre, tipo, precio) {
+    this.name = nombre;
+    this.tipo = tipo;
+    this.precio = precio;
+  }
+  get_mostrarStock() {
+    console.log("----------------");
+    console.log("Nombre:", this.name);
+    console.log("Tipo:", this.tipo);
+    console.log("Precio:$", this.precio);
+  }
 }
-listaDeProductos=[];
-listaDeProductos.push(new productos("Cartas","Poker",1500,5));
-listaDeProductos.push(new productos("Cartas","Españolas",1000,10));
-listaDeProductos.push(new productos("Dados","Profecional lados planos",3000,20));
-listaDeProductos.push(new productos("Monedas","Poker*50",100,100));
+listaDeProductos = [];
+listaDeProductos.push(new productos("Cartas", "Poker", 1500));
+listaDeProductos.push(new productos("Mesa", "Terciopelo verde", 5000));
+listaDeProductos.push(new productos("Dados", "Profecional lados planos", 3000));
+listaDeProductos.push(new productos("Monedas", "Poker*50", 100));
 
-function opciones(){
-    console.log("1-----Comprar")
-    console.log("2-----Salir")
+function opciones() {
+  console.log("1-----Comprar");
+  console.log("2-----Salir");
+  pregunta = parseInt(prompt("Que desea realizar?"));
 
-    pregunta= parseInt(prompt("Que desea ralizar?"));
+  if (pregunta === 1) {
+    let productosTexto = listaDeProductos
+      .map(function (producto) {
+        return ("-" +producto.name +"(" +producto.tipo +") Precio:$" +producto.precio);
+      })
+      .join("\n");
+    console.log("Los productos son:\n" + productosTexto);
+    
 
-    if(pregunta==1){
-        for(let productos of listaDeProductos){
-            productos.get_mostrarStock();
-        }        
-    }else if (pregunta==2){
-        salir()
-    }
+  } else if (pregunta === 2) {
+    salir();
+  }
 }
 
-function salir(){
-    alert("Fin del proceso");
+function salir() {
+  alert("Fin del proceso");
+}
+
+opciones();
+
+function buscarProducto(productos){
+    return productos.name==compraDeUsuario;
+}
+
+compraDeUsuario=prompt("Que producto desea comprar?");
+
+busquedaDeProducto=listaDeProductos.find(buscarProducto);
+console.log(busquedaDeProducto);
+
+cantidad=prompt("Cuantas unidades desea comprar?");
+valorDeCompra= cantidad*(buscarProducto.precio);
+ 
+if(valorDeCompra>saldo){
+    alert("Lo sentimos,su saldo es menor al precio de compra,intente nuevamente");
+}
+else{
+    alert("Gracias por su compra");
 }
 
 
