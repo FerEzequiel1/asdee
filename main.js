@@ -24,7 +24,6 @@ listaDeProductos.push(new productos("Cartas","Españolas",1000,10));
 listaDeProductos.push(new productos("Dados","Profecional lados planos",3000,20));
 listaDeProductos.push(new productos("Monedas","Poker*50",100,100));
 
-
 function opciones(){
     console.log("1-----Comprar")
     console.log("2-----Salir")
@@ -38,7 +37,6 @@ function opciones(){
     }else if (pregunta==2){
         salir()
     }
-
 }
 
 function salir(){
