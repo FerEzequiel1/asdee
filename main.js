@@ -1,73 +1,55 @@
-let listaDeProductos;
-let pregunta;
-let compraDeUsuario;
-let busquedaDeProducto;
-let cantidad;
-let precio;
-let saldo=0;
-let valorDeCompra;
+                                                 // Pedido de variables y sus verificaciones:
 
-class productos {
-  constructor(nombre, tipo, precio) {
-    this.name = nombre;
-    this.tipo = tipo;
-    this.precio = precio;
-  }
-  get_mostrarStock() {
-    console.log("----------------");
-    console.log("Nombre:", this.name);
-    console.log("Tipo:", this.tipo);
-    console.log("Precio:$", this.precio);
-  }
-}
-listaDeProductos = [];
-listaDeProductos.push(new productos("Cartas", "Poker", 1500));
-listaDeProductos.push(new productos("Mesa", "Terciopelo verde", 5000));
-listaDeProductos.push(new productos("Dados", "Profecional lados planos", 3000));
-listaDeProductos.push(new productos("Monedas", "Poker*50", 100));
 
-function opciones() {
-  console.log("1-----Comprar");
-  console.log("2-----Salir");
-  pregunta = parseInt(prompt("Que desea realizar?"));
+// PEDIDO EN LETRAS:
+    nombre = prompt("Ingrese el nombre :");
+		while (!isNaN(nombre)) {
+			nombre = prompt("Error: Ingrese el nombre :");
+		}
+    tipo = prompt("Ingrese su tipo: gato,perro o hamster")
+		while (!isNaN(tipo) || tipo != "gato" && tipo != "perro" && tipo != "hamster") {
+			tipo = prompt("Error: Ingrese su tipo: gato,perro o hamster");
+		}
+    respuesta = prompt("Quiere seguir ingresando mascotas?? (si/no)");
+		while (!isNaN(respuesta)|| respuesta != "si" && respuesta != "no") {
+			respuesta = prompt("Error: Quiere seguir ingresando mascotas (si/no)");
+		}
 
-  if (pregunta === 1) {
-    let productosTexto = listaDeProductos
-      .map(function (producto) {
-        return ("-" +producto.name +"(" +producto.tipo +") Precio:$" +producto.precio);
-      })
-      .join("\n");
-    console.log("Los productos son:\n" + productosTexto);
-    
+//PEDIDO EN NÚMEROS:
 
-  } else if (pregunta === 2) {
-    salir();
-  }
+		edad = parseInt(prompt("Ingrese la edad:"))
+		while (isNaN(edad) || edad < 1) {
+			edad = prompt("Error: Ingrese la edad:");
+		}
+		peso = parseInt(prompt("Ingrese su peso:"))
+		while (isNaN(peso) || peso < 1) {
+			peso = prompt("Error: Ingrese su peso:");
+		}
+
+//BANDERA NUMERO MAS ALTO
+
+if(bandera==true||numeroMasAlto<numero){
+    numeroMasAlto=numero;
+    bandera=false;
 }
 
-function salir() {
-  alert("Fin del proceso");
+//BANDERA NUMERO MAS ALTO CON UNA CONDICIÓN
+if(vacuna=="si" && banderaVacuna==true|| vacuna=="si" && edadMasVieja<edad){
+  masVieja=edad;
+  nombreMasViejo=nombre;
+  banderaVacuna=false;
 }
 
-opciones();
+//COMPARACÍON DE QUE ES MAS ALTO
 
-function buscarProducto(productos){
-    return productos.name==compraDeUsuario;
-}
-
-compraDeUsuario=prompt("Que producto desea comprar?");
-
-busquedaDeProducto=listaDeProductos.find(buscarProducto);
-console.log(busquedaDeProducto);
-
-cantidad=prompt("Cuantas unidades desea comprar?");
-valorDeCompra= cantidad*(buscarProducto.precio);
- 
-if(valorDeCompra>saldo){
-    alert("Lo sentimos,su saldo es menor al precio de compra,intente nuevamente");
+if(numero1 > numero2 && numero1 > numero3){
+  numeroMasAlto = numero1;
 }
 else{
-    alert("Gracias por su compra");
+  if(numero2 > numero3 && numero2 >= numero1){
+    numeroMasAlto= numero2;
+  }
+  else{
+    numeroMasAlto= numero3
+  }
 }
-
-
